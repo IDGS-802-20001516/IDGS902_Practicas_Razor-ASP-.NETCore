@@ -1,0 +1,37 @@
+﻿@page
+@model IntroduccionRazor.Pages.imcModel
+@{
+    ViewData["Title"] = "Calculadora de IMC";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">Calculadora de Índice de Masa Corporal (IMC)</h2>
+    <br />
+    <form method="post" class="text-center">
+        <div class="form-group">
+            <label for="Peso">Peso (kg):</label>
+            <input type="number" step="any" id="Peso" name="Peso" class="form-control" required />
+        </div>
+        <br />
+        <div class="form-group">
+            <label for="Altura">Altura (m):</label>
+            <input type="number" step="any" id="Altura" name="Altura" class="form-control" required />
+        </div>
+        <br />
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Calcular IMC</button>
+        </div>
+    </form>
+
+    @if (Model.IMC != null)
+    {
+        <div class="mt-5">
+            <h3 class="text-center">Resultado</h3>
+            <p class="text-center">Tu IMC es: <strong>@Model.IMC.Value.ToString("F2")</strong></p>
+            <p class="text-center">Clasificación: <strong>@Model.Clasificacion</strong></p>
+            <div class="text-center">
+                <img src="~/newfolder/@Model.Imagen" alt="Recomendación" class="img-fluid" />
+            </div>
+        </div>
+    }
+</div>

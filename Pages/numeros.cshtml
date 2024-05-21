@@ -1,0 +1,33 @@
+﻿@page
+@model IntroduccionRazor.Pages.numerosModel
+
+@{
+    ViewData["Title"] = "Generador de Arreglo Aleatorio";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">Generador de Arreglo Aleatorio</h2>
+
+    <form method="post" class="text-center mt-4">
+        <button type="submit" class="btn btn-primary">Generar Arreglo</button>
+    </form>
+
+    @if (Model.Numeros != null && Model.Numeros.Length > 0)
+    {
+        <div class="mt-5">
+            <h3 class="text-center">Arreglo Aleatorio:</h3>
+            <p class="text-center">@string.Join(", ", Model.Numeros)</p>
+
+            <h3 class="text-center mt-4">Resultados:</h3>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Suma:</strong> @Model.Suma</li>
+                <li class="list-group-item"><strong>Promedio:</strong> @Model.Promedio</li>
+                <li class="list-group-item"><strong>Moda:</strong> @string.Join(", ", Model.Moda)</li>
+                <li class="list-group-item"><strong>Mediana:</strong> @Model.Mediana</li>
+            </ul>
+
+            <h3 class="text-center mt-4">Arreglo Ordenado:</h3>
+            <p class="text-center">@string.Join(", ", Model.Numeros.OrderBy(n => n))</p>
+        </div>
+    }
+</div>

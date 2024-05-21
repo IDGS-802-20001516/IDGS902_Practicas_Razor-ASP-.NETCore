@@ -1,0 +1,35 @@
+﻿@page
+@model IntroduccionRazor.Pages.Index1Model
+@{
+    ViewData["Title"] = "Cifrado César";
+}
+
+<h2>Cifrado César</h2>
+
+<form method="post" class="mt-4">
+    <div class="form-group row">
+        <label for="Mensaje" class="col-sm-2 col-form-label">Mensaje:</label>
+        <div class="col-sm-10">
+            <input type="text" id="Mensaje" name="Mensaje" class="form-control" required />
+        </div>
+    </div>
+    <div class="form-group row" style="margin-top: 20px;">
+        <label for="N" class="col-sm-2 col-form-label">Valor de n:</label>
+        <div class="col-sm-10">
+            <input type="number" id="N" name="N" class="form-control" required />
+        </div>
+    </div>
+    <div class="form-group row mt-3">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="submit" name="accion" value="Codificar" class="btn btn-primary">Codificar</button>
+            <button type="submit" name="accion" value="Decodificar" class="btn btn-secondary ml-2">Decodificar</button>
+        </div>
+    </div>
+</form>
+
+@if (Model.Resultado != null)
+{
+    <div class="mt-4">
+        <p class="alert alert-info">Resultado: @Model.Resultado</p>
+    </div>
+}

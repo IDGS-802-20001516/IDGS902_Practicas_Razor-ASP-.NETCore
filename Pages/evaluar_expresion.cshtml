@@ -1,0 +1,62 @@
+﻿@page
+@model IntroduccionRazor.Pages.ExpressionModel
+
+<h3>EVALUACIÓN DE EXPRESIONES</h3>
+<br />
+<form method="POST">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <p>Se evaluará la expresión con la siguiente fórmula:</p>
+        <img src="~/newfolder/formula.png" alt="Fórmula" style="width: 300px; height: auto; margin-bottom: 20px;" />
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <div style="flex: 1; min-width: 120px;">
+            <label for="a">a:</label>
+            <input type="number" step="1" asp-for="A" id="a" class="form-control" />
+        </div>
+        <div style="flex: 1; min-width: 120px;">
+            <label for="b">b:</label>
+            <input type="number" step="1" asp-for="B" id="b" class="form-control" />
+        </div>
+        <div style="flex: 1; min-width: 120px;">
+            <label for="x">x:</label>
+            <input type="number" step="1" asp-for="X" id="x" class="form-control" />
+        </div>
+        <div style="flex: 1; min-width: 120px;">
+            <label for="y">y:</label>
+            <input type="number" step="1" asp-for="Y" id="y" class="form-control" />
+        </div>
+        <div style="flex: 1; min-width: 120px;">
+            <label for="n">n:</label>
+            <input type="number" step="1" asp-for="N" id="n" class="form-control" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Calcular</button>
+
+    @if (!string.IsNullOrEmpty(Model.M))
+    {
+        <div style="margin-top: 10px; color: red;">
+            <strong>OJO</strong> @Model.M
+        </div>
+    }
+
+    @if (Model.P != 0)
+    {
+        <div style="margin-top: 20px; display: flex; flex-direction: column;">
+            <div style="margin-bottom: 20px;">
+                <h4>Operación</h4>
+                <p>(@Model.A * @Model.X + @Model.B * @Model.Y)<sup>@Model.N</sup></p>
+                <p>(@Model.AX + @Model.BY)<sup>@Model.N</sup></p>
+                <p>(@Model.S)<sup>@Model.N</sup></p>
+                <strong>Resultado = @Model.P</strong>
+            </div>
+
+            <div>
+                <h3>Sumatoria:</h3>
+                @for (int k = 0; k < Model.R.Count; k++)
+                {
+                    <p>k=@k = @Model.R[k]</p>
+                }
+            </div>
+        </div>
+    }
+</form>
